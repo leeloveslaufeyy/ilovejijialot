@@ -14,6 +14,45 @@
       text-align: center;
       overflow-x: hidden;
     }
+    #content {
+      display: none; /* Hidden until correct password is entered */
+    }
+    #password-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(to bottom, #ffe6f0, #e6e6fa);
+    }
+    #password-screen h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5em;
+      color: #ff69b4;
+    }
+    #password-screen input {
+      padding: 10px;
+      font-size: 1em;
+      margin: 10px;
+      border: 2px solid #ff69b4;
+      border-radius: 5px;
+    }
+    #password-screen button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #password-screen button:hover {
+      background: #ff85c2;
+    }
+    #password-screen p {
+      color: #ff0000;
+      display: none;
+    }
     header {
       padding: 50px;
       background: rgba(255, 255, 255, 0.8);
@@ -58,23 +97,48 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>To My Dearest Baby, Princess</h1>
-    <p class="heart">💖</p>
-  </header>
-  <div class="container">
-    <div class="message">
-      <p>You light up my world every single day. This little corner of the internet is for you—a place to remind you how much you mean to me.</p>
-      <p>I love you alot and will always do. You're the bestest ever person that I know and I'm really grateful for you. I love you a lot MWAH.</p>
-    </div>
-    <div class="gallery">
-      <!-- Add your photos here; replace URLs with your images -->
-      <img src="https://via.placeholder.com/200?text=Us" alt="Our Memory">
-      <img src="https://via.placeholder.com/200?text=You" alt="Another Memory">
-    </div>
+  <div id="password-screen">
+    <h1>What Could The Password be?</h1>
+    <input type="password" id="password-input" placeholder="Type the password...">
+    <button onclick="checkPassword()">Unlock</button>
+    <p id="error-message">Oops, wrong password! Try again baby hehe bobo.</p>
   </div>
-  <footer>
-    <p>Made with all my love for you, 2025.</p>
-  </footer>
+  <div id="content">
+    <header>
+      <h1>To My Dearest Baby, Princess</h1>
+      <p class="heart">💖</p>
+    </header>
+    <div class="container">
+      <div class="message">
+        <p>You light up my world every single day. This little corner of the internet is for you—a place to remind you how much you mean to me.</p>
+        <p>I love you a LOT and will always do. You're the bestest ever person that I know and I'm really grateful for you. I love you so much MWAH.</p>
+      </div>
+      <div class="gallery">
+        <img src="https://https://imgur.com/a/Q5AvE6o" alt="Picture Naten">
+        <img src="https://imgur.com/a/lxc0tUm" alt="Isa Pa HEHEHEHE">
+      </div>
+    </div>
+    <footer>
+      <p>Made with all my love for you, 2025.</p>
+    </footer>
+  </div>
+  <script>
+    function checkPassword() {
+      const password = "jilleean"; // Change this to your desired password
+      const input = document.getElementById("password-input").value;
+      if (input === password) {
+        document.getElementById("password-screen").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      } else {
+        document.getElementById("error-message").style.display = "block";
+      }
+    }
+    // Allow pressing Enter to submit password
+    document.getElementById("password-input").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        checkPassword();
+      }
+    });
+  </script>
 </body>
 </html>
